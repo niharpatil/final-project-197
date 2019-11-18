@@ -15,5 +15,5 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('react-app')
+  document.getElementById('react-app') // binds to <div id="react-app"> in public/index.html
 );

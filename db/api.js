@@ -19,6 +19,8 @@ function addTodo(todoname) {
 function removeTodo(todoId) {
   return todo.destroy(todoId).then(() => todo.findAll());
 }
+
+// Export the functions so that they can be used throughout your backend
 module.exports = {
   todos: {
     getTodos,

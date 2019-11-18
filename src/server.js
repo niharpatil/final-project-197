@@ -8,12 +8,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const db = require('../db/api');
-
-app.use('/api', require('./server/routes/apirouter')(db));
-
+// Set 'public' to be a static directory
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
+// Connect to the database
+require('../db/dbconnect');
+
+// Load the api router onto app
+app.use('/api', require('./server/routes/apirouter'));
+
+// Any non-api routes should be sent the html file as a response
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });

@@ -1,7 +1,8 @@
 const S = require('sequelize');
 
+// Schema for todo model
 module.exports = {
-  name: {
+  taskname: {
     type: S.STRING
   }
 };

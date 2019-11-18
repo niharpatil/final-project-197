@@ -1,5 +1,6 @@
 const S = require('sequelize');
 
+// Connects to a local database.
 const sequelize = new S('test197', 'root', 'Abcd1234', {
   host: 'localhost',
   dialect: 'mysql',
@@ -8,7 +9,12 @@ const sequelize = new S('test197', 'root', 'Abcd1234', {
   logging: false
 });
 
-const User = sequelize.define('user', require('./models/user'));
-const Pet = sequelize.define('pet', require('./models/pet'));
+// Register the 'todo' model with sequelize
+const todo = sequelize.define('todo', require('./models/todo'));
 
+// Load the sequelize models into the mysql database
 sequelize.sync().then(() => console.log('synced'));
+
+module.exports = {
+  todo
+};
